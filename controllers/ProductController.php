@@ -12,7 +12,8 @@ class ProductController
         $particularProduct = array();
         $particularProduct =Product::getProductById($productId);
 
-        var_dump($particularProduct);
+
+//        var_dump($particularProduct);
 
         require_once(ROOT . '/views/product/view.php');
         return true;

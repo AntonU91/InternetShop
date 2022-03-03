@@ -6,7 +6,7 @@ class Product
     /**
      * the number of items shown on the front page
      */
-    const COUNT_SHOWN_BY_DEFAULT = 10;
+    const COUNT_SHOWN_BY_DEFAULT = 3;
 
     /**
      * Return products` list
@@ -35,13 +35,17 @@ class Product
      * Return products of particular category whose id  is a param
      * @param $categoryId
      **/
-    public static function getProductsByCategoryId($categoryId = false)
+    public static function getProductsByCategoryId($categoryId = false, $page = 1)
     {
+
+
+
         if ($categoryId) {
             $db = DataBase::getConnection();
             $categoryProducts = array();
-            $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND category_id='$categoryId'"
-                                    ."ORDER BY id DESC LIMIT ".self::COUNT_SHOWN_BY_DEFAULT);
+            $offset = ($page - 1) * self::COUNT_SHOWN_BY_DEFAULT;
+            $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND category_id=$categoryId 
+                                ORDER BY id DESC LIMIT " . self::COUNT_SHOWN_BY_DEFAULT . " OFFSET ".$offset);
             $i = 0;
             while ($row = $result->fetch()) {
                 $categoryProducts [$i] ["id"] = $row ['id'];
@@ -57,17 +61,28 @@ class Product
         }
     }
 
-    public static function getProductById ($productId) {
+    public static function getProductById($productId)
+    {
         if ($productId) {
             $db = DataBase::getConnection();
             $currentProduct = array();
-            $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND id= $productId");
+            $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND id=$productId");
 
-             $row = $result->fetch(PDO::FETCH_ASSOC);
-                $currentProduct = $row;
-
-             return $currentProduct;
+            return $result->fetch(PDO::FETCH_ASSOC);
         }
+    }
+
+    public static function getTotalCountOfItemsInCategory($categoryId)
+    {
+        if ($categoryId) {
+            $db = DataBase::getConnection();
+            $result = $db->query("SELECT COUNT(*) as total_count FROM phpshop.product WHERE status=1 AND category_id=$categoryId");
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row["total_count"];
+
+        }
+
+
     }
 
 

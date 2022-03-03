@@ -150,6 +150,8 @@
                         </a>
                     </div>
                 </div><!--/recommended_items-->
+            <!--    Постраничная навигация            -->
+                <?php echo $pagination->get(); ?>
 
             </div>
         </div>

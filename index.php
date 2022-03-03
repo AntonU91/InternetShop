@@ -6,8 +6,11 @@ error_reporting(E_ALL);
 
 // 2. Подключение файлов системы
 const ROOT = __DIR__;
+require_once (ROOT."/components/autoLoad.php");
 require_once (ROOT."/components/Router.php");
 //require_once (ROOT. "/views/site/index.php");
+
+
 
 
 
