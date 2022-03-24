@@ -64,7 +64,11 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина<span><?php require_once(ROOT . "/models/Cart.php"); ?>
+                                        <?php if (!empty($_SESSION ["products"])) :?>
+                                            (<?php echo Cart::countOfItems()?>)
+                                        <?php endif ?>;
+                                                <span></a></li>
 
                             <?php if (User::isGuest()): ?>
                                 <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>

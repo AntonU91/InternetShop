@@ -55,6 +55,15 @@ class User
         return false;
     }
 
+    public static function checkUserPhone(string $phoneNumber): bool
+    {
+        $pattern = "/[+]?[3]?[8]?[0][0-9]{9}/";
+        if (preg_match_all($pattern, $phoneNumber)) {
+            return true;
+        }
+        return false;
+    }
+
 // Проверяем существует ли такой пользователь
     public static function checkUserData($email, $password)
     {
@@ -92,7 +101,7 @@ class User
         if (isset ($_SESSION ['user'])) {
             return $_SESSION ['user'];
         }
-        header("Location: /user/login");
+        //header("Location: /user/login");
 
     }
 
@@ -113,7 +122,9 @@ class User
             $sqlQuery = "SELECT * FROM phpshop.user WHERE id = :id ";
             $result = $db->prepare($sqlQuery);
             $result->bindParam("id", $id, PDO::PARAM_STR);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
             $result->execute();
+
             return $result->fetch();
         }
     }

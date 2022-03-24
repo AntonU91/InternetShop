@@ -39,13 +39,12 @@ class Product
     {
 
 
-
         if ($categoryId) {
             $db = DataBase::getConnection();
             $categoryProducts = array();
             $offset = ($page - 1) * self::COUNT_SHOWN_BY_DEFAULT;
             $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND category_id=$categoryId 
-                                ORDER BY id DESC LIMIT " . self::COUNT_SHOWN_BY_DEFAULT . " OFFSET ".$offset);
+                                ORDER BY id DESC LIMIT " . self::COUNT_SHOWN_BY_DEFAULT . " OFFSET " . $offset);
             $i = 0;
             while ($row = $result->fetch()) {
                 $categoryProducts [$i] ["id"] = $row ['id'];
@@ -61,15 +60,31 @@ class Product
         }
     }
 
-    public static function getProductById($productId)
+    /**
+     * Возвращает bнформацию о товарах из корзины.
+     * @param $idsArray , ids товаров
+     * @return mixed|void
+     */
+    public static function getProductByIds($idsArray)
     {
-        if ($productId) {
-            $db = DataBase::getConnection();
-            $currentProduct = array();
-            $result = $db->query("SELECT * FROM phpshop.product WHERE status=1 AND id=$productId");
+        $products = [];
+        // делаем представления массива $idsArray в строчном виде
+        $idsString = implode(", ", $idsArray);
 
-            return $result->fetch(PDO::FETCH_ASSOC);
+        $db = DataBase::getConnection();
+        $querySql = "SELECT * FROM phpshop.product WHERE status=1 AND id IN ($idsString);";
+        $result = $db ->query($querySql, PDO::FETCH_ASSOC);
+
+        $i =0;
+        while ($row = $result ->fetch()) {
+            $products [$i] ["id"] = $row ["id"];
+            $products [$i] ["code"] = $row ["code"];
+            $products [$i] ["name"] = $row ["name"];
+            $products [$i] ["price"] = $row ["price"];
+            $i++;
         }
+        return $products;
+
     }
 
     public static function getTotalCountOfItemsInCategory($categoryId)

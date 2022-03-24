@@ -20,7 +20,7 @@
 
                     <div class="signup-form"><!--sign up form-->
                         <h2>Вход на сайт</h2>
-                        <form action="" method="post">
+                        <form action="#" method="post">
                             <input type="name" name="name" placeholder="Имя" value="<?php echo $name ?>""/>
                             <input type="password" name="password" placeholder="Пароль" value="<?php echo $password ?>""/>
                             <input type="submit" name="submit" class="btn btn-default" value="Редактировать"/>

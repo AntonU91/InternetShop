@@ -9,7 +9,7 @@ class CabinetController
         $userId = User::checkLogged();
 
         // проверяем какой пользователь сейчас залогинен по идентификатору
-//        echo $userId;
+
         $user = User::getUserById($userId);
 
         require_once ROOT . "/views/cabinet/index.php";

@@ -10,7 +10,7 @@ class ProductController
         $categories = Category::getCategoriesList();
 
         $particularProduct = array();
-        $particularProduct =Product::getProductById($productId);
+        $particularProduct =Product::getProductByIds($productId);
 
 
 //        var_dump($particularProduct);

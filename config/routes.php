@@ -10,6 +10,10 @@ return array(
     'user/register' => 'user/register',
     'user/logout' => 'user/logout',
     'cabinet/edit' => "user/edit",
+    "contacts" => "site/contact",
+    "cart/add/([0-9]+)" => "cart/add/$1",
+    "cart" => "cart/index",
+    'cart/checkout' => 'cart/checkout',
 
     '' => 'site/index', // actionIndex в siteController
 );

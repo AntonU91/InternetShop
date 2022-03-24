@@ -11,7 +11,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title"><a href="/category/<?php echo $categoryItem ['id']; ?>"
-                                                               class="<?php if ($categoryId == $categoryItem['id']) echo "active";?>">
+                                                               class="<?php if ($categoryId == $categoryItem['id']) echo "active"; ?>">
                                             <?php echo $categoryItem['name']; ?> </a></h4>
                                 </div>
                             </div>
@@ -36,8 +36,9 @@
                                         <p>
                                             <a href="/product/<?php echo $productItem['id']; ?>"><?php echo $productItem['name']; ?></a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="/cart/add/<?php echo $productItem["id"] ?>"
+                                           class="btn btn-default add-to-cart"><i
+                                                    class="fa fa-shopping-cart"></i>В корзину</a>
 
                                     </div>
                                     <!--         Проверяем конструкцией if является ли эта товарная единица новой-->
@@ -66,7 +67,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
 
                                         </div>
@@ -80,7 +81,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +94,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +109,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +122,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +135,7 @@
                                                 <h2>$56</h2>
                                                 <p>Easy Polo Black Edition</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>В корзину</a>
+                                                            class="fa fa-shopping-cart"></i>В корзину</a>
                                             </div>
 
                                         </div>
@@ -150,7 +151,7 @@
                         </a>
                     </div>
                 </div><!--/recommended_items-->
-            <!--    Постраничная навигация            -->
+                <!--    Постраничная навигация            -->
                 <?php echo $pagination->get(); ?>
 
             </div>
